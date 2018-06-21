@@ -1,4 +1,4 @@
-package cn.nicolite.lib;
+package cn.nicolite.mvp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("cn.nicolite.lib.test", appContext.getPackageName());
+        assertEquals("cn.nicolite.mvp.test", appContext.getPackageName());
     }
 }

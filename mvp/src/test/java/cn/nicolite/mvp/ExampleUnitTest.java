@@ -1,4 +1,4 @@
-package cn.nicolite.lib;
+package cn.nicolite.mvp;
 
 import org.junit.Test;
 
