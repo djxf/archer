@@ -4,7 +4,7 @@ package cn.nicolite.mvp.jBase;
  * Created by nicolite on 17-10-13.
  */
 
-public interface IBaseView {
+public interface JBaseView {
     void showLoading();
 
     void closeLoading();

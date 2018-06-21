@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
@@ -25,10 +26,10 @@ import cn.nicolite.mvp.utils.LogUtils;
  * Created by nicolite on 17-9-6.
  */
 
-public abstract class BaseActivity extends RxAppCompatActivity {
+public abstract class JBaseActivity extends RxAppCompatActivity {
     protected final String TAG = getClass().getSimpleName();
     protected Context context;
-    protected Activity activity;
+    protected AppCompatActivity activity;
     private ActivityLifeCycleListener lifeCycleListener;
     protected Unbinder unbinder;
     protected static final int SENSOR = 697;
@@ -267,13 +268,9 @@ public abstract class BaseActivity extends RxAppCompatActivity {
 
     /**
      * 设置状态栏字体为深色
-     *
-     * @param isDeepColor
      */
-    public void setDeepColorStatusBar(boolean isDeepColor) {
-        if (isDeepColor) {
-            StatusBarUtils.setDeepColorStatusBar(this.getWindow());
-        }
+    public void setDeepColorStatusBar() {
+        StatusBarUtils.setDeepColorStatusBar(this.getWindow());
     }
 
     /**

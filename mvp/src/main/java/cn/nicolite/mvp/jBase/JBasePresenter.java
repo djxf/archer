@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -20,15 +22,15 @@ import cn.nicolite.mvp.utils.LogUtils;
  * Created by nicolite on 17-10-13.
  */
 
-public abstract class BasePresenter<I, V> implements ActivityLifeCycleListener, FragmentLifeCycleListener {
+public abstract class JBasePresenter<I, V> implements ActivityLifeCycleListener, FragmentLifeCycleListener {
     protected final String TAG = getClass().getSimpleName();
     private Reference<I> iViewRef;
     private Reference<V> viewRef;
     protected Context context;
-    protected BaseActivity activity;
-    protected BaseFragment fragment;
+    protected AppCompatActivity activity;
+    protected Fragment fragment;
 
-    public BasePresenter(I iView, V view) {
+    public JBasePresenter(I iView, V view) {
         attachView(iView);
         attachActivity(view);
         setListener(view);
@@ -41,10 +43,10 @@ public abstract class BasePresenter<I, V> implements ActivityLifeCycleListener, 
      */
     private void setListener(V view) {
         if (getView() != null) {
-            if (view instanceof BaseActivity) {
-                ((BaseActivity) getView()).setOnLifeCycleListener(this);
-            } else if (view instanceof BaseFragment) {
-                ((BaseFragment) getView()).setOnLifeCycleListener(this);
+            if (view instanceof JBaseActivity) {
+                ((JBaseActivity) getView()).setOnLifeCycleListener(this);
+            } else if (view instanceof JBaseFragment) {
+                ((JBaseFragment) getView()).setOnLifeCycleListener(this);
             }
         }
     }
@@ -134,8 +136,8 @@ public abstract class BasePresenter<I, V> implements ActivityLifeCycleListener, 
     public void onCreate(Bundle saveInstanceState) {
         LogUtils.d(TAG, TAG + "-->onCreate()");
         V view = getView();
-        if (view instanceof BaseActivity) {
-            activity = (BaseActivity) view;
+        if (view instanceof JBaseActivity) {
+            activity = (AppCompatActivity) view;
             context = activity;
         }
     }
@@ -163,7 +165,7 @@ public abstract class BasePresenter<I, V> implements ActivityLifeCycleListener, 
     @Override
     public void onDestroy() {
         LogUtils.d(TAG, TAG + "-->onDestroy()");
-        if (getView() instanceof BaseActivity) {
+        if (getView() instanceof JBaseActivity) {
             detachIView();
             detachView();
             context = null;
@@ -190,18 +192,17 @@ public abstract class BasePresenter<I, V> implements ActivityLifeCycleListener, 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         LogUtils.d(TAG, TAG + "-->onActivityCreated()");
         V view = getView();
-        if (view instanceof BaseFragment) {
-            fragment = (BaseFragment) view;
-            context = fragment.context;
-            activity = fragment.activity;
-
+        if (view instanceof JBaseFragment) {
+            fragment = (Fragment) view;
+            context = fragment.getContext();
+            activity = (AppCompatActivity) fragment.getActivity();
         }
     }
 
     @Override
     public void onDestroyView() {
         LogUtils.d(TAG, TAG + "-->onDestroyView()");
-        if (getView() instanceof BaseFragment) {
+        if (getView() instanceof JBaseFragment) {
             detachIView();
             detachView();
             fragment = null;

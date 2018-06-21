@@ -20,7 +20,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
  * Created by nicolite on 2018/5/20.
  * email nicolite@nicolite.cn
  */
-abstract class BaseActivity : RxAppCompatActivity() {
+abstract class KBaseActivity : RxAppCompatActivity() {
     protected val TAG = javaClass.simpleName
     protected lateinit var context: Context
     protected lateinit var activity: AppCompatActivity

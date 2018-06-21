@@ -2,6 +2,8 @@ package cn.nicolite.mvp.kBase
 
 import android.content.Context
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import cn.nicolite.mvp.listener.ActivityLifeCycleListener
@@ -14,13 +16,13 @@ import java.lang.ref.WeakReference
  * Created by nicolite on 2018/5/20.
  * email nicolite@nicolite.cn
  */
-abstract class BasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListener, FragmentLifeCycleListener {
+abstract class KBasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListener, FragmentLifeCycleListener {
     protected val TAG = javaClass.simpleName
     private lateinit var iViewRef: Reference<I>
     private lateinit var viewRef: Reference<V>
     protected var context: Context? = null
-    protected var activity: BaseActivity? = null
-    protected var fragment: BaseFragment? = null
+    protected var activity: AppCompatActivity? = null
+    protected var fragment: Fragment? = null
 
     init {
         attachIView(iView)
@@ -33,8 +35,8 @@ abstract class BasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListene
      */
     private fun setLifeCycleListener(view: V) {
         when (view) {
-            is BaseActivity -> view.setOnLifeCycleListener(this)
-            is BaseFragment -> view.setOnLifeCycleListener(this)
+            is KBaseActivity -> view.setOnLifeCycleListener(this)
+            is KBaseFragment -> view.setOnLifeCycleListener(this)
         }
     }
 
@@ -101,7 +103,7 @@ abstract class BasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListene
     override fun onCreate(saveInstanceState: Bundle?) {
         LogUtils.d(TAG, "$TAG-->onCreate()")
         val view = getView()
-        if (view is BaseActivity) {
+        if (view is KBaseActivity) {
             activity = view
             context = activity
         }
@@ -125,7 +127,7 @@ abstract class BasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListene
 
     override fun onDestroy() {
         LogUtils.d(TAG, "$TAG-->onDestroy()")
-        if (getView() is BaseActivity) {
+        if (getView() is KBaseActivity) {
             detachIView()
             detachView()
             context = null
@@ -148,16 +150,16 @@ abstract class BasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListene
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         LogUtils.d(TAG, "$TAG-->onActivityCreated()")
         val view = getView()
-        if (view is BaseFragment) {
+        if (view is KBaseFragment) {
             fragment = view
             context = view.context
-            activity = view.activity as BaseActivity
+            activity = view.activity as AppCompatActivity
         }
     }
 
     override fun onDestroyView() {
         LogUtils.d(TAG, "$TAG-->onDestroyView()")
-        if (getView() is BaseFragment) {
+        if (getView() is KBaseFragment) {
             detachIView()
             detachView()
             context = null

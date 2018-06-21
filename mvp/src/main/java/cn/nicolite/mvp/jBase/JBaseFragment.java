@@ -24,12 +24,12 @@ import cn.nicolite.mvp.utils.LogUtils;
  * Created by nicolite on 17-10-13.
  */
 
-public abstract class BaseFragment extends RxFragment {
+public abstract class JBaseFragment extends RxFragment {
     protected final String TAG = getClass().getSimpleName();
     protected Unbinder unbinder;
     private FragmentLifeCycleListener lifeCycleListener;
     protected Context context;
-    protected BaseActivity activity;
+    protected AppCompatActivity activity;
     protected boolean isViewCreated;
     protected boolean isUIVisible;
     protected boolean isFirstVisible;
@@ -96,7 +96,7 @@ public abstract class BaseFragment extends RxFragment {
         if (lifeCycleListener != null) {
             lifeCycleListener.onActivityCreated(savedInstanceState);
         }
-        activity = (BaseActivity) getActivity();
+        activity = (AppCompatActivity) getActivity();
 
         doBusiness();
 

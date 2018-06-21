@@ -3,6 +3,7 @@ package cn.nicolite.mvp.kBase
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,11 +19,11 @@ import com.trello.rxlifecycle2.components.support.RxFragment
  * Created by nicolite on 2018/5/20.
  * email nicolite@nicolite.cn
  */
-abstract class BaseFragment : RxFragment() {
+abstract class KBaseFragment : RxFragment() {
     protected val TAG = javaClass.simpleName
     private var lifeCycleListener: FragmentLifeCycleListener? = null
     protected lateinit var mContext: Context
-    protected lateinit var activity: BaseActivity
+    protected lateinit var activity: AppCompatActivity
     protected lateinit var fragment: Fragment
     protected var isViewCreated = false
     protected var isUserVisible = false
@@ -67,7 +68,7 @@ abstract class BaseFragment : RxFragment() {
         LogUtils.d(TAG, "$TAG-->onActivityCreated()")
         lifeCycleListener?.onActivityCreated(savedInstanceState)
         mContext = context!!
-        activity = getActivity() as BaseActivity
+        activity = getActivity() as AppCompatActivity
         doBusiness()
 
         if (isFirstFragment()) {
