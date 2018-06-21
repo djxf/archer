@@ -14,8 +14,8 @@ import com.trello.rxlifecycle2.components.support.RxFragment;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.nicolite.mvp.R;
-import cn.nicolite.mvp.utils.ActivityUtilsKt;
 import cn.nicolite.mvp.listener.FragmentLifeCycleListener;
+import cn.nicolite.mvp.utils.ActivityUtilsKt;
 import cn.nicolite.mvp.utils.LogUtils;
 
 
@@ -204,7 +204,7 @@ public abstract class JBaseFragment extends RxFragment {
      */
     protected int setLayoutId() {
         LogUtils.d(TAG, TAG + "-->setLayoutId()");
-        return R.layout.activity_default;
+        return R.layout.layout_default;
     }
 
     /**

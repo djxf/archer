@@ -99,7 +99,7 @@ abstract class KBaseActivity : RxAppCompatActivity() {
      */
     protected open fun setLayoutId(): Int {
         LogUtils.d(TAG, "$TAG-->setLayoutId()")
-        return R.layout.activity_default
+        return R.layout.layout_default
     }
 
     /**

@@ -1,6 +1,5 @@
 package cn.nicolite.mvp.jBase;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -13,11 +12,11 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.nicolite.mvp.R;
+import cn.nicolite.mvp.listener.ActivityLifeCycleListener;
 import cn.nicolite.mvp.utils.ActivityUtilsKt;
+import cn.nicolite.mvp.utils.LogUtils;
 import cn.nicolite.mvp.utils.SlideUtilsKt;
 import cn.nicolite.mvp.utils.StatusBarUtils;
-import cn.nicolite.mvp.listener.ActivityLifeCycleListener;
-import cn.nicolite.mvp.utils.LogUtils;
 
 
 /**
@@ -131,7 +130,7 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
      */
     protected int setLayoutId() {
         LogUtils.d(TAG, TAG + "-->setLayoutId()");
-        return R.layout.activity_default;
+        return R.layout.layout_default;
     }
 
     /**

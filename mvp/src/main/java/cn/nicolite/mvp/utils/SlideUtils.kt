@@ -9,7 +9,8 @@ import com.r0adkll.slidr.model.SlidrListener
 import com.r0adkll.slidr.model.SlidrPosition
 
 /**
- * Created by nicolite on 17-6-23.
+ * Created by nicolite on 17-6-23.i
+ * Activty活动退出配置
  */
 
 
