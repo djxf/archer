@@ -45,8 +45,9 @@ fun startActivityWithOptions(context: Context, clazz: Class<*>, options: Bundle?
     intent.setClass(context, clazz)
     if (options != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
         context.startActivity(intent, options)
+    } else {
+        context.startActivity(intent)
     }
-    context.startActivity(intent)
 }
 
 /**
@@ -64,8 +65,9 @@ fun startActivity(context: Context, clazz: Class<*>, bundle: Bundle?, options: B
     }
     if (options != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
         context.startActivity(intent, options)
+    } else {
+        context.startActivity(intent)
     }
-    context.startActivity(intent)
 }
 
 /**
