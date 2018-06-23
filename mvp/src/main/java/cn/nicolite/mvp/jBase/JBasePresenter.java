@@ -94,7 +94,7 @@ public abstract class JBasePresenter<I, V> implements ActivityLifeCycleListener,
      *
      * @return
      */
-    public I getiView() {
+    public I getIView() {
         if (iViewRef == null) {
             return null;
         }
