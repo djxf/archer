@@ -9,13 +9,10 @@ import android.view.WindowManager;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.nicolite.mvp.R;
 import cn.nicolite.mvp.listener.ActivityLifeCycleListener;
 import cn.nicolite.mvp.utils.ActivityUtilsKt;
 import cn.nicolite.mvp.utils.LogUtils;
-import cn.nicolite.mvp.utils.SlideUtilsKt;
 import cn.nicolite.mvp.utils.StatusBarUtils;
 
 
@@ -30,7 +27,6 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
     protected Context context;
     protected AppCompatActivity activity;
     private ActivityLifeCycleListener lifeCycleListener;
-    protected Unbinder unbinder;
     protected static final int SENSOR = 697;
     protected static final int PORTRAIT = 519;
     protected static final int LANDSCAPE = 539;
@@ -44,7 +40,6 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
         }
         initConfig(savedInstanceState);
         setContentView(setLayoutId());
-        unbinder = ButterKnife.bind(this);
         context = this;
         activity = this;
         Bundle bundle = getIntent().getExtras();
@@ -94,9 +89,6 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
         LogUtils.d(TAG, TAG + "-->onDestroy()");
         if (lifeCycleListener != null) {
             lifeCycleListener.onDestroy();
-        }
-        if (unbinder != null) {
-            unbinder.unbind();
         }
     }
 
@@ -272,12 +264,6 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
         StatusBarUtils.setDeepColorStatusBar(this.getWindow());
     }
 
-    /**
-     * 是否设置滑动退出
-     * 需要在主题中设置<item name="android:windowIsTranslucent">true</item>，否则将显示异常
-     */
-    public void setSlideExit() {
-        SlideUtilsKt.setSlideExit(this);
-    }
+
 
 }

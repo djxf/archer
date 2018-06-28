@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import cn.nicolite.mvp.R;
 import cn.nicolite.mvp.listener.FragmentLifeCycleListener;
 import cn.nicolite.mvp.utils.ActivityUtilsKt;
@@ -26,7 +24,6 @@ import cn.nicolite.mvp.utils.LogUtils;
 
 public abstract class JBaseFragment extends RxFragment {
     protected final String TAG = getClass().getSimpleName();
-    protected Unbinder unbinder;
     private FragmentLifeCycleListener lifeCycleListener;
     protected Context context;
     protected AppCompatActivity activity;
@@ -81,8 +78,6 @@ public abstract class JBaseFragment extends RxFragment {
         initArguments(arguments);
 
         context = getContext();
-
-        unbinder = ButterKnife.bind(this, view);
 
         isViewCreated = true;
         return view;
@@ -148,9 +143,6 @@ public abstract class JBaseFragment extends RxFragment {
         LogUtils.d(TAG, TAG + "-->onDestroyView()");
         if (lifeCycleListener != null) {
             lifeCycleListener.onDestroyView();
-        }
-        if (unbinder != null) {
-            unbinder.unbind();
         }
     }
 

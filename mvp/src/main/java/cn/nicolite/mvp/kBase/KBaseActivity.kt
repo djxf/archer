@@ -7,13 +7,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 import cn.nicolite.mvp.R
-import cn.nicolite.mvp.utils.StatusBarUtils
-import cn.nicolite.mvp.utils.setSlideExit
 import cn.nicolite.mvp.listener.ActivityLifeCycleListener
-import cn.nicolite.mvp.utils.LogUtils
-import cn.nicolite.mvp.utils.startActivity
-import cn.nicolite.mvp.utils.startActivityForResult
-import cn.nicolite.mvp.utils.startActivityWithOptions
+import cn.nicolite.mvp.utils.*
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
 /**
@@ -232,11 +227,4 @@ abstract class KBaseActivity : RxAppCompatActivity() {
         StatusBarUtils.setDeepColorStatusBar(this.window)
     }
 
-    /**
-     * 是否设置滑动退出
-     * 需要在主题中设置<item name="android:windowIsTranslucent">true</item>，否则将显示异常
-     */
-    fun setSlideExit() {
-        setSlideExit(this)
-    }
 }
