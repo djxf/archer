@@ -9,6 +9,4 @@ import cn.nicolite.mvp.jBase.JBaseFragment;
  */
 
 public abstract class BaseFragment extends JBaseFragment {
-
-
 }

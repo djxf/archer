@@ -265,5 +265,4 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
     }
 
 
-
 }

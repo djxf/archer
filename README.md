@@ -51,10 +51,48 @@ dependencies {
 如果你使用Kotlin，那么使Activity继承KBaseActivity，Fragment继承KBaseFragment，Presenter继承KBasePresenter，你也可以将你的View接口集成KBaseView(非必需)
 当然你也可以通过继承这些类实现自己的Base类，这样可以添加自己的一些需求，推荐使用此方式，需要注意的是，Java和Kotlin继承的类不能使用不同的包中的Base类，也就是说你如果继承的是JBase类型那么配套的Presenter也必须继承JBase类型的  
 
-具体使用可以参考该项目
-https://github.com/nicolite/Palm300Heroes
 
-具体方法说明请查看源码，源码中有注释，内容太多就不介绍了
+打开Log输出，默认是关闭的，打开后可以看到完整的生命周期调用，便于调试,推荐在Application类中配置，也可以在其他敌方配置
+java
+```java
+ LogUtils.setDebug(BuildConfig.DEBUG);
+```
+
+kotlin:
+```kotlin
+LogUtils.debug = BuildConfig.DEBUG
+```
+
+基类继承写法：
+```java
+public abstract class BaseActivity extends JBaseActivity {
+
+}
+
+public abstract class BaseFragment extends JBaseFragment {
+}
+
+public abstract class BasePresenter<I, V> extends JBasePresenter<I, V> {
+
+    public BasePresenter(I iView, V view) {
+        super(iView, view);
+    }
+}
+```
+
+```kotlin
+abstract class BaseActivity : KBaseActivity() {
+
+}
+
+abstract class BaseFragment : KBaseFragment() {
+
+}
+
+abstract class BasePresenter<I, V>(iView: I, view: V) : KBasePresenter<I, V>(iView, view) {
+
+}
+```
 
 ## License
 ```text
