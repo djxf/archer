@@ -52,8 +52,8 @@ dependencies {
 当然你也可以通过继承这些类实现自己的Base类，这样可以添加自己的一些需求，推荐使用此方式，需要注意的是，Java和Kotlin继承的类不能使用不同的包中的Base类，也就是说你如果继承的是JBase类型那么配套的Presenter也必须继承JBase类型的  
 
 
-打开Log输出，默认是关闭的，打开后可以看到完整的生命周期调用，便于调试,推荐在Application类中配置，也可以在其他敌方配置
-java
+打开Log输出，默认是关闭的，打开后可以看到完整的生命周期调用，便于调试,推荐在Application类中配置，也可以在其他敌方配置  
+java:
 ```java
  LogUtils.setDebug(BuildConfig.DEBUG);
 ```
@@ -63,7 +63,7 @@ kotlin:
 LogUtils.debug = BuildConfig.DEBUG
 ```
 
-基类继承写法：
+基类继承写法:  
 java:
 ```java
 public abstract class BaseActivity extends JBaseActivity {
