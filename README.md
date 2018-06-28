@@ -64,6 +64,7 @@ LogUtils.debug = BuildConfig.DEBUG
 ```
 
 基类继承写法：
+java:
 ```java
 public abstract class BaseActivity extends JBaseActivity {
 
@@ -80,6 +81,7 @@ public abstract class BasePresenter<I, V> extends JBasePresenter<I, V> {
 }
 ```
 
+kotlin:
 ```kotlin
 abstract class BaseActivity : KBaseActivity() {
 
