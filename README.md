@@ -55,12 +55,12 @@ dependencies {
 打开Log输出，默认是关闭的，打开后可以看到完整的生命周期调用，便于调试,推荐在Application类中配置，也可以在其他敌方配置  
 java:
 ```java
- LogUtils.setDebug(BuildConfig.DEBUG);
+ LogUtils.setDebug(true);
 ```
 
 kotlin:
 ```kotlin
-LogUtils.debug = BuildConfig.DEBUG
+LogUtils.debug = true
 ```
 
 基类继承写法:  
