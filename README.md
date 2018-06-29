@@ -38,7 +38,6 @@ dependencies {
   //latestVersion替换为上面徽章后面的数字
     implementation 'com.github.nicolite:archer:latestVersion'
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
