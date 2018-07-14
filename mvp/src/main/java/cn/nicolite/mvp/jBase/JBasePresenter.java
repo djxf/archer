@@ -26,9 +26,9 @@ public abstract class JBasePresenter<I, V> implements ActivityLifeCycleListener,
     protected final String TAG = getClass().getSimpleName();
     private Reference<I> iViewRef;
     private Reference<V> viewRef;
-    protected Context context;
-    protected AppCompatActivity activity;
-    protected Fragment fragment;
+    protected Context mContext;
+    protected AppCompatActivity mActivity;
+    protected Fragment mFragment;
 
     public JBasePresenter(I iView, V view) {
         attachView(iView);
@@ -137,8 +137,8 @@ public abstract class JBasePresenter<I, V> implements ActivityLifeCycleListener,
         LogUtils.d(TAG, TAG + "-->onCreate()");
         V view = getView();
         if (view instanceof JBaseActivity) {
-            activity = (AppCompatActivity) view;
-            context = activity;
+            mActivity = (AppCompatActivity) view;
+            mContext = mActivity;
         }
     }
 
@@ -168,8 +168,8 @@ public abstract class JBasePresenter<I, V> implements ActivityLifeCycleListener,
         if (getView() instanceof JBaseActivity) {
             detachIView();
             detachView();
-            context = null;
-            activity = null;
+            mContext = null;
+            mActivity = null;
         }
     }
 
@@ -193,9 +193,9 @@ public abstract class JBasePresenter<I, V> implements ActivityLifeCycleListener,
         LogUtils.d(TAG, TAG + "-->onActivityCreated()");
         V view = getView();
         if (view instanceof JBaseFragment) {
-            fragment = (Fragment) view;
-            context = fragment.getContext();
-            activity = (AppCompatActivity) fragment.getActivity();
+            mFragment = (Fragment) view;
+            mContext = mFragment.getContext();
+            mActivity = (AppCompatActivity) mFragment.getActivity();
         }
     }
 
@@ -205,9 +205,9 @@ public abstract class JBasePresenter<I, V> implements ActivityLifeCycleListener,
         if (getView() instanceof JBaseFragment) {
             detachIView();
             detachView();
-            fragment = null;
-            context = null;
-            activity = null;
+            mFragment = null;
+            mContext = null;
+            mActivity = null;
         }
     }
 

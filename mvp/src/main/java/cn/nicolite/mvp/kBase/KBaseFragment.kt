@@ -23,12 +23,11 @@ abstract class KBaseFragment : RxFragment() {
     protected val TAG = javaClass.simpleName
     private var lifeCycleListener: FragmentLifeCycleListener? = null
     protected lateinit var mContext: Context
-    protected lateinit var activity: AppCompatActivity
-    protected lateinit var fragment: Fragment
+    protected lateinit var mActivity: AppCompatActivity
+    protected lateinit var mFragment: Fragment
     protected var isViewCreated = false
     protected var isUserVisible = false
     protected var isFirstVisible = false
-
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
@@ -59,7 +58,7 @@ abstract class KBaseFragment : RxFragment() {
         initConfig(savedInstanceState)
         initArguments(arguments)
         isViewCreated = true
-        fragment = this
+        mFragment = this
         return view
     }
 
@@ -68,7 +67,7 @@ abstract class KBaseFragment : RxFragment() {
         LogUtils.d(TAG, "$TAG-->onActivityCreated()")
         lifeCycleListener?.onActivityCreated(savedInstanceState)
         mContext = context!!
-        activity = getActivity() as AppCompatActivity
+        mActivity = getActivity() as AppCompatActivity
         doBusiness()
 
         if (isFirstFragment()) {
@@ -204,7 +203,7 @@ abstract class KBaseFragment : RxFragment() {
      * @param requestCode
      */
     fun startActivityForResult(clazz: Class<*>, requestCode: Int) {
-        startActivityForResult(activity, clazz, requestCode)
+        startActivityForResult(mActivity, clazz, requestCode)
     }
 
     /**
@@ -236,6 +235,6 @@ abstract class KBaseFragment : RxFragment() {
      * @param requestCode
      */
     fun startActivityForResult(clazz: Class<*>, bundle: Bundle?, requestCode: Int) {
-        startActivityForResult(activity, clazz, bundle, requestCode)
+        startActivityForResult(mActivity, clazz, bundle, requestCode)
     }
 }

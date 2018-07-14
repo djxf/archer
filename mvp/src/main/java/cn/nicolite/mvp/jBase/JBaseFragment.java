@@ -25,8 +25,8 @@ import cn.nicolite.mvp.utils.LogUtils;
 public abstract class JBaseFragment extends RxFragment {
     protected final String TAG = getClass().getSimpleName();
     private FragmentLifeCycleListener lifeCycleListener;
-    protected Context context;
-    protected AppCompatActivity activity;
+    protected Context mContext;
+    protected AppCompatActivity mActivity;
     protected boolean isViewCreated;
     protected boolean isUIVisible;
     protected boolean isFirstVisible;
@@ -77,7 +77,7 @@ public abstract class JBaseFragment extends RxFragment {
         Bundle arguments = getArguments();
         initArguments(arguments);
 
-        context = getContext();
+        mContext = getContext();
 
         isViewCreated = true;
         return view;
@@ -91,7 +91,7 @@ public abstract class JBaseFragment extends RxFragment {
         if (lifeCycleListener != null) {
             lifeCycleListener.onActivityCreated(savedInstanceState);
         }
-        activity = (AppCompatActivity) getActivity();
+        mActivity = (AppCompatActivity) getActivity();
 
         doBusiness();
 
@@ -233,7 +233,7 @@ public abstract class JBaseFragment extends RxFragment {
      * @param clazz
      */
     public void startActivity(Class<?> clazz) {
-        ActivityUtilsKt.startActivity(context, clazz);
+        ActivityUtilsKt.startActivity(mContext, clazz);
     }
 
     /**
@@ -243,7 +243,7 @@ public abstract class JBaseFragment extends RxFragment {
      * @param bundle
      */
     public void startActivity(Class<?> clazz, Bundle bundle) {
-        ActivityUtilsKt.startActivity(context, clazz, bundle);
+        ActivityUtilsKt.startActivity(mContext, clazz, bundle);
     }
 
     /**
@@ -253,7 +253,7 @@ public abstract class JBaseFragment extends RxFragment {
      * @param requestCode
      */
     public void startActivityForResult(Class<?> clazz, int requestCode) {
-        ActivityUtilsKt.startActivityForResult(activity, clazz, requestCode);
+        ActivityUtilsKt.startActivityForResult(mActivity, clazz, requestCode);
     }
 
     /**
@@ -263,7 +263,7 @@ public abstract class JBaseFragment extends RxFragment {
      * @param options ActivityOptionsCompat.makeSceneTransitionAnimation()
      */
     public void startActivityWithOptions(Class<?> clazz, Bundle options) {
-        ActivityUtilsKt.startActivityWithOptions(context, clazz, options);
+        ActivityUtilsKt.startActivityWithOptions(mContext, clazz, options);
     }
 
     /**
@@ -274,7 +274,7 @@ public abstract class JBaseFragment extends RxFragment {
      * @param options ActivityOptionsCompat.makeSceneTransitionAnimation()
      */
     public void startActivity(Class<?> clazz, Bundle bundle, Bundle options) {
-        ActivityUtilsKt.startActivity(context, clazz, bundle, options);
+        ActivityUtilsKt.startActivity(mContext, clazz, bundle, options);
     }
 
     /**
@@ -285,6 +285,6 @@ public abstract class JBaseFragment extends RxFragment {
      * @param requestCode
      */
     public void startActivityForResult(Class<?> clazz, Bundle bundle, int requestCode) {
-        ActivityUtilsKt.startActivityForResult(activity, clazz, bundle, requestCode);
+        ActivityUtilsKt.startActivityForResult(mActivity, clazz, bundle, requestCode);
     }
 }

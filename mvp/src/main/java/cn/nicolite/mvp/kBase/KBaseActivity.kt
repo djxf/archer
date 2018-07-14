@@ -17,8 +17,8 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
  */
 abstract class KBaseActivity : RxAppCompatActivity() {
     protected val TAG = javaClass.simpleName
-    protected lateinit var context: Context
-    protected lateinit var activity: AppCompatActivity
+    protected lateinit var mContext: Context
+    protected lateinit var mActivity: AppCompatActivity
     private var lifeCycleListener: ActivityLifeCycleListener? = null
 
     companion object {
@@ -33,8 +33,8 @@ abstract class KBaseActivity : RxAppCompatActivity() {
         lifeCycleListener?.onCreate(savedInstanceState)
         initConfig(savedInstanceState)
         setContentView(setLayoutId())
-        context = this
-        activity = this
+        mContext = this
+        mActivity = this
         initBundleData(intent.extras)
         doBusiness()
     }
@@ -115,7 +115,7 @@ abstract class KBaseActivity : RxAppCompatActivity() {
      * 页面跳转
      */
     fun startActivity(clazz: Class<*>) {
-        startActivity(context, clazz)
+        startActivity(mContext, clazz)
     }
 
     /**
@@ -125,7 +125,7 @@ abstract class KBaseActivity : RxAppCompatActivity() {
      * @param bundle
      */
     fun startActivity(clazz: Class<*>, bundle: Bundle?) {
-        startActivity(context, clazz, bundle)
+        startActivity(mContext, clazz, bundle)
     }
 
     /**
@@ -135,7 +135,7 @@ abstract class KBaseActivity : RxAppCompatActivity() {
      * @param requestCode
      */
     fun startActivityForResult(clazz: Class<*>, requestCode: Int) {
-        startActivityForResult(activity, clazz, requestCode)
+        startActivityForResult(mActivity, clazz, requestCode)
     }
 
     /**
@@ -145,7 +145,7 @@ abstract class KBaseActivity : RxAppCompatActivity() {
      * @param options ActivityOptionsCompat.makeSceneTransitionAnimation()
      */
     fun startActivityWithOptions(clazz: Class<*>, options: Bundle?) {
-        startActivityWithOptions(context, clazz, options)
+        startActivityWithOptions(mContext, clazz, options)
     }
 
     /**
@@ -156,7 +156,7 @@ abstract class KBaseActivity : RxAppCompatActivity() {
      * @param options ActivityOptionsCompat.makeSceneTransitionAnimation()
      */
     fun startActivity(clazz: Class<*>, bundle: Bundle?, options: Bundle?) {
-        startActivity(context, clazz, bundle, options)
+        startActivity(mContext, clazz, bundle, options)
     }
 
     /**
@@ -167,7 +167,7 @@ abstract class KBaseActivity : RxAppCompatActivity() {
      * @param requestCode
      */
     fun startActivityForResult(clazz: Class<*>, bundle: Bundle?, requestCode: Int) {
-        startActivityForResult(activity, clazz, bundle, requestCode)
+        startActivityForResult(mActivity, clazz, bundle, requestCode)
     }
 
 

@@ -24,8 +24,8 @@ import cn.nicolite.mvp.utils.StatusBarUtils;
 
 public abstract class JBaseActivity extends RxAppCompatActivity {
     protected final String TAG = getClass().getSimpleName();
-    protected Context context;
-    protected AppCompatActivity activity;
+    protected Context mContext;
+    protected AppCompatActivity mActivity;
     private ActivityLifeCycleListener lifeCycleListener;
     protected static final int SENSOR = 697;
     protected static final int PORTRAIT = 519;
@@ -40,8 +40,8 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
         }
         initConfig(savedInstanceState);
         setContentView(setLayoutId());
-        context = this;
-        activity = this;
+        mContext = this;
+        mActivity = this;
         Bundle bundle = getIntent().getExtras();
         initBundleData(bundle);
         doBusiness();
@@ -147,7 +147,7 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
      * @param clazz
      */
     public void startActivity(Class<?> clazz) {
-        ActivityUtilsKt.startActivity(context, clazz);
+        ActivityUtilsKt.startActivity(mContext, clazz);
     }
 
     /**
@@ -157,7 +157,7 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
      * @param bundle
      */
     public void startActivity(Class<?> clazz, Bundle bundle) {
-        ActivityUtilsKt.startActivity(context, clazz, bundle);
+        ActivityUtilsKt.startActivity(mContext, clazz, bundle);
     }
 
     /**
@@ -167,7 +167,7 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
      * @param requestCode
      */
     public void startActivityForResult(Class<?> clazz, int requestCode) {
-        ActivityUtilsKt.startActivityForResult(activity, clazz, requestCode);
+        ActivityUtilsKt.startActivityForResult(mActivity, clazz, requestCode);
     }
 
     /**
@@ -177,7 +177,7 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
      * @param options ActivityOptionsCompat.makeSceneTransitionAnimation()
      */
     public void startActivityWithOptions(Class<?> clazz, Bundle options) {
-        ActivityUtilsKt.startActivityWithOptions(context, clazz, options);
+        ActivityUtilsKt.startActivityWithOptions(mContext, clazz, options);
     }
 
     /**
@@ -188,7 +188,7 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
      * @param options ActivityOptionsCompat.makeSceneTransitionAnimation()
      */
     public void startActivity(Class<?> clazz, Bundle bundle, Bundle options) {
-        ActivityUtilsKt.startActivity(context, clazz, bundle, options);
+        ActivityUtilsKt.startActivity(mContext, clazz, bundle, options);
     }
 
     /**
@@ -199,7 +199,7 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
      * @param requestCode
      */
     public void startActivityForResult(Class<?> clazz, Bundle bundle, int requestCode) {
-        ActivityUtilsKt.startActivityForResult(activity, clazz, bundle, requestCode);
+        ActivityUtilsKt.startActivityForResult(mActivity, clazz, bundle, requestCode);
     }
 
     /**

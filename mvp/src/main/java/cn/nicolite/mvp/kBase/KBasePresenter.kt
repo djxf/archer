@@ -20,9 +20,9 @@ abstract class KBasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListen
     protected val TAG = javaClass.simpleName
     private lateinit var iViewRef: Reference<I>
     private lateinit var viewRef: Reference<V>
-    protected var context: Context? = null
-    protected var activity: AppCompatActivity? = null
-    protected var fragment: Fragment? = null
+    protected var mContext: Context? = null
+    protected var mActivity: AppCompatActivity? = null
+    protected var mFragment: Fragment? = null
 
     init {
         attachIView(iView)
@@ -104,8 +104,8 @@ abstract class KBasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListen
         LogUtils.d(TAG, "$TAG-->onCreate()")
         val view = getView()
         if (view is KBaseActivity) {
-            activity = view
-            context = activity
+            mActivity = view
+            mContext = mActivity
         }
     }
 
@@ -130,8 +130,8 @@ abstract class KBasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListen
         if (getView() is KBaseActivity) {
             detachIView()
             detachView()
-            context = null
-            activity = null
+            mContext = null
+            mActivity = null
         }
     }
 
@@ -151,9 +151,9 @@ abstract class KBasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListen
         LogUtils.d(TAG, "$TAG-->onActivityCreated()")
         val view = getView()
         if (view is KBaseFragment) {
-            fragment = view
-            context = view.context
-            activity = view.activity as AppCompatActivity
+            mFragment = view
+            mContext = view.context
+            mActivity = view.activity as AppCompatActivity
         }
     }
 
@@ -162,9 +162,9 @@ abstract class KBasePresenter<I, V>(iView: I, view: V) : ActivityLifeCycleListen
         if (getView() is KBaseFragment) {
             detachIView()
             detachView()
-            context = null
-            activity = null
-            fragment = null
+            mContext = null
+            mActivity = null
+            mFragment = null
         }
     }
 
