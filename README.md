@@ -16,13 +16,12 @@
 
 ## 依赖框架
 
+使用Kotlin实现，如果你是Java项目，还需要在项目中引入Kotlin，或者参考Demo中的Java实现
 在根目录下的build.gradle文件中对应位置添加如下内容
 ```groovy
-buildscript {
-    ext.kotlin_version = '1.2.50'
-  
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
     }
 }
 ```
@@ -31,55 +30,21 @@ buildscript {
 
 在app目录下的build.gradle文件中对应位置添加如下内容
 ```groovy
-//在apply plugin: 'com.android.application'后面添加
-apply plugin: 'kotlin-android'
-
 dependencies {
   //latestVersion替换为上面徽章后面的数字
     implementation 'com.github.nicolite:archer:latestVersion'
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
-    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
-
    }
 ```
 ## 使用说明
-如果你使用Java，那么使Activity继承JBaseActivity，Fragment继承JBaseFragment，Presenter继承JBasePresenter，你也可以将你的View接口集成JBaseView(非必需)
-如果你使用Kotlin，那么使Activity继承KBaseActivity，Fragment继承KBaseFragment，Presenter继承KBasePresenter，你也可以将你的View接口集成KBaseView(非必需)
-当然你也可以通过继承这些类实现自己的Base类，这样可以添加自己的一些需求，推荐使用此方式，需要注意的是，Java和Kotlin继承的类不能使用不同的包中的Base类，也就是说你如果继承的是JBase类型那么配套的Presenter也必须继承JBase类型的  
-
+使Activity继承KBaseActivity，Fragment继承KBaseFragment，Presenter继承KBasePresenter，你也可以将你的View接口集成KBaseView(非必需)
+当然你也可以通过继承这些类实现自己的Base类，这样可以添加自己的一些需求，推荐使用此方式。  
 
 打开Log输出，默认是关闭的，打开后可以看到完整的生命周期调用，便于调试,推荐在Application类中配置，也可以在其他敌方配置  
-java:
-```java
- LogUtils.setDebug(true);
-```
-
-kotlin:
 ```kotlin
 LogUtils.debug = true
 ```
 
 基类继承写法:  
-java:
-```java
-public abstract class BaseActivity extends JBaseActivity {
-
-}
-
-public abstract class BaseFragment extends JBaseFragment {
-}
-
-public abstract class BasePresenter<I, V> extends JBasePresenter<I, V> {
-
-    public BasePresenter(I iView, V view) {
-        super(iView, view);
-    }
-}
-```
-
 kotlin:
 ```kotlin
 abstract class BaseActivity : KBaseActivity() {
