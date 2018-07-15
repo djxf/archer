@@ -104,6 +104,4 @@ object StatusBarUtils {
             window.statusBarColor = Color.TRANSPARENT
         }
     }
-
-
 }

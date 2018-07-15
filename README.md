@@ -16,7 +16,7 @@
 
 ## 依赖框架
 
-使用Kotlin实现，如果你是Java项目，还需要在项目中引入Kotlin，或者参考Demo中的jBase包中的实现
+使用Kotlin实现，如果你是Java项目，还需要在项目中引入Kotlin，或者参考Demo中的jBase包中的Java实现  
 在根目录下的build.gradle文件中对应位置添加如下内容
 ```groovy
 allprojects {
