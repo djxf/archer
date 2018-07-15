@@ -1,4 +1,4 @@
-package cn.nicolite.mvp.jBase;
+package cn.nicolite.archer.jBase;
 
 /**
  * Created by nicolite on 17-10-13.

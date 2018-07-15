@@ -1,4 +1,4 @@
-package cn.nicolite.mvp.jBase;
+package cn.nicolite.archer.jBase;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;

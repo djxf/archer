@@ -37,7 +37,7 @@ object StatusBarUtils {
     fun setDeepColorStatusBar(window: Window) {
         when {
             OSUtils.isMIUI() -> {
-                if (OSUtils.getMIUIVersion() < 9) {
+                if (OSUtils.getMIUIVersion() < 9 || Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
                     miuiStatusBarLightMode(window)
                     LogUtils.d(TAG, "$TAG -> MIUI V8-")
                 } else {
