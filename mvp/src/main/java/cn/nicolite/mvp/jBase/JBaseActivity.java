@@ -242,9 +242,7 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
      * 是否设置沉浸状态栏
      */
     public void setImmersiveStatusBar() {
-
-        StatusBarUtils.setImmersiveStatusBar(this.getWindow());
-
+        StatusBarUtils.INSTANCE.setImmersiveStatusBar(this.getWindow());
     }
 
     /**
@@ -261,7 +259,7 @@ public abstract class JBaseActivity extends RxAppCompatActivity {
      * 设置状态栏字体为深色
      */
     public void setDeepColorStatusBar() {
-        StatusBarUtils.setDeepColorStatusBar(this.getWindow());
+        StatusBarUtils.INSTANCE.setDeepColorStatusBar(this.getWindow());
     }
 
 
