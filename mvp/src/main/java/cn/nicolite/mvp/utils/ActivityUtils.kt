@@ -15,8 +15,7 @@ import android.os.Bundle
  * 页面跳转
  */
 fun startActivity(context: Context, clazz: Class<*>) {
-    val intent = Intent(context, clazz)
-    context.startActivity(intent)
+    context.startActivity(Intent(context, clazz))
 }
 
 /**
@@ -26,8 +25,7 @@ fun startActivity(context: Context, clazz: Class<*>) {
  * @param bundle
  */
 fun startActivity(context: Context, clazz: Class<*>, bundle: Bundle?) {
-    val intent = Intent()
-    intent.setClass(context, clazz)
+    val intent = Intent(context, clazz)
     if (bundle != null) {
         intent.putExtras(bundle)
     }
@@ -41,8 +39,7 @@ fun startActivity(context: Context, clazz: Class<*>, bundle: Bundle?) {
  * @param options ActivityOptionsCompat.makeSceneTransitionAnimation()
  */
 fun startActivityWithOptions(context: Context, clazz: Class<*>, options: Bundle?) {
-    val intent = Intent()
-    intent.setClass(context, clazz)
+    val intent = Intent(context, clazz)
     if (options != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
         context.startActivity(intent, options)
     } else {
@@ -58,8 +55,7 @@ fun startActivityWithOptions(context: Context, clazz: Class<*>, options: Bundle?
  * @param options ActivityOptionsCompat.makeSceneTransitionAnimation()
  */
 fun startActivity(context: Context, clazz: Class<*>, bundle: Bundle?, options: Bundle?) {
-    val intent = Intent()
-    intent.setClass(context, clazz)
+    val intent = Intent(context, clazz)
     if (bundle != null) {
         intent.putExtras(bundle)
     }
@@ -77,9 +73,7 @@ fun startActivity(context: Context, clazz: Class<*>, bundle: Bundle?, options: B
  * @param requestCode
  */
 fun startActivityForResult(activity: Activity, clazz: Class<*>, requestCode: Int) {
-    val intent = Intent()
-    intent.setClass(activity, clazz)
-    activity.startActivityForResult(intent, requestCode)
+    activity.startActivityForResult(Intent(activity, clazz), requestCode)
 }
 
 /**
@@ -90,8 +84,7 @@ fun startActivityForResult(activity: Activity, clazz: Class<*>, requestCode: Int
  * @param requestCode
  */
 fun startActivityForResult(activity: Activity, clazz: Class<*>, bundle: Bundle?, requestCode: Int) {
-    val intent = Intent()
-    intent.setClass(activity, clazz)
+    val intent = Intent(activity, clazz)
     if (bundle != null) {
         intent.putExtras(bundle)
     }
