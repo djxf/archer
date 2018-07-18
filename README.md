@@ -8,7 +8,7 @@
 * [License](#License)
 
 ## 介绍
-从原来项目中抽离的mvp快速开发框架，封装了一些常用的功能，比如简化了Activity跳转，
+从原来项目中抽离的mvp快速开发框架，封装了一些常用的功能，带使用rxlifecycle管理RxJava生命周期，比如简化了Activity跳转，
 还提供了一些经常用的的属性，比如context，activity，fragment可以直接获取，
 针对Activity和Fragment的生命周期，定义了自己的生命周期处理方法，比如setLayoutId()设置xml layout，doBusiness()处理业务代码等，
 大大加快开发速度。解决了mvp在安卓上运用的一些坑，比如Presenter会造成内存泄漏
@@ -33,6 +33,8 @@ allprojects {
 dependencies {
   //latestVersion替换为上面徽章后面的数字
     implementation 'com.github.nicolite:archer:latestVersion'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
    }
 ```
 ## 使用说明
@@ -45,7 +47,7 @@ LogUtils.debug = true
 ```
 
 基类继承写法:  
-kotlin:
+
 ```kotlin
 abstract class BaseActivity : KBaseActivity() {
 
