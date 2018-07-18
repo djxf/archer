@@ -8,7 +8,7 @@
 * [License](#License)
 
 ## 介绍
-从原来项目中抽离的mvp快速开发框架，封装了一些常用的功能，带使用rxlifecycle管理RxJava生命周期，比如简化了Activity跳转，
+从原来项目中抽离的mvp快速开发框架，封装了一些常用的功能，使用rxlifecycle管理RxJava生命周期，比如简化了Activity跳转，
 还提供了一些经常用的的属性，比如context，activity，fragment可以直接获取，
 针对Activity和Fragment的生命周期，定义了自己的生命周期处理方法，比如setLayoutId()设置xml layout，doBusiness()处理业务代码等，
 大大加快开发速度。解决了mvp在安卓上运用的一些坑，比如Presenter会造成内存泄漏
@@ -41,7 +41,7 @@ dependencies {
 使Activity继承KBaseActivity，Fragment继承KBaseFragment，Presenter继承KBasePresenter，你也可以将你的View接口集成KBaseView(非必需)
 当然你也可以通过继承这些类实现自己的Base类，这样可以添加自己的一些需求，推荐使用此方式。  
 
-打开Log输出，默认是关闭的，打开后可以看到完整的生命周期调用，便于调试,推荐在Application类中配置，也可以在其他敌方配置  
+打开Log输出，默认是关闭的，打开后可以看到完整的生命周期调用，便于调试,推荐在Application类中配置，也可以在其他地方配置  
 ```kotlin
 LogUtils.debug = true
 ```
