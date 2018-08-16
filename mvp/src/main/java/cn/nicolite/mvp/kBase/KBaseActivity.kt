@@ -20,12 +20,9 @@ abstract class KBaseActivity : RxAppCompatActivity() {
     protected lateinit var mContext: Context
     protected lateinit var mActivity: AppCompatActivity
     private var lifeCycleListener: ActivityLifeCycleListener? = null
-
-    companion object {
-        protected const val SENSOR = 697
-        protected const val PORTRAIT = 519
-        protected const val LANDSCAPE = 539
-    }
+    protected val SENSOR = 697
+    protected val PORTRAIT = 519
+    protected val LANDSCAPE = 539
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -176,7 +173,7 @@ abstract class KBaseActivity : RxAppCompatActivity() {
     }
 
     /**
-     * 是否允许全屏
+     * 设置全屏
      */
     fun setFullScreen() {
         this.window.setFlags(
@@ -204,7 +201,7 @@ abstract class KBaseActivity : RxAppCompatActivity() {
     }
 
     /**
-     * 是否设置沉浸状态栏
+     * 设置沉浸状态栏
      *
      * @param isSetStatusBar
      */

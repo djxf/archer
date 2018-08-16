@@ -7,4 +7,9 @@ import cn.nicolite.mvp.kBase.KBaseView
  * email nicolite@nicolite.cn
  */
 interface IBaseView : KBaseView {
+    override fun showLoading() {
+    }
+
+    override fun closeLoading() {
+    }
 }
