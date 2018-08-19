@@ -2,7 +2,7 @@ language: android
 android:
   components:
     - tools
-    - build-tools-257.0.3
+    - build-tools-27.0.3
     - android-18
     - android-27
     - extra-android-m2repository
