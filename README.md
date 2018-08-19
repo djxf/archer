@@ -26,7 +26,7 @@ allprojects {
 }
 ```
 
-[![](https://jitpack.io/v/nicolite/archer.svg)](https://jitpack.io/#nicolite/archer)
+[![](https://jitpack.io/v/nicolite/archer.svg)](https://jitpack.io/#nicolite/archer)    [![Build Status](https://travis-ci.org/nicolite/archer.svg?branch=master)](https://travis-ci.org/nicolite/archer)
 
 在app目录下的build.gradle文件中对应位置添加如下内容
 ```groovy
