@@ -21,8 +21,12 @@ object OSUtils {
 
 
     fun isFlyme(): Boolean {
-        val method = Build::class.java.getMethod("hasSmartBar")
-        return method != null
+        return try {
+            val method = Build::class.java.getMethod("hasSmartBar")
+            method != null
+        } catch (e: Exception) {
+            false
+        }
     }
 
     fun isEMUI(): Boolean {
