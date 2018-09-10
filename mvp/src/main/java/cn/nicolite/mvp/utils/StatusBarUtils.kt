@@ -11,7 +11,7 @@ import android.view.WindowManager
  * email nicolite@nicolite.cn
  */
 object StatusBarUtils {
-    private val TAG = "StatusBarUtils"
+    private const val TAG = "StatusBarUtils"
 
     fun setImmersiveStatusBar(window: Window) {
         when {

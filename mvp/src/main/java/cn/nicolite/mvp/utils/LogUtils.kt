@@ -7,12 +7,12 @@ import android.util.Log
  */
 
 object LogUtils {
-    private val VERBOSE = 1
-    private val DEBUG = 2
-    private val INFO = 3
-    private val WARN = 4
-    private val ERROR = 5
-    private val NOTHING = 6
+    private const val VERBOSE = 1
+    private const val DEBUG = 2
+    private const val INFO = 3
+    private const val WARN = 4
+    private const val ERROR = 5
+    private const val NOTHING = 6
 
     //用来控制日志输出级别
     @JvmField

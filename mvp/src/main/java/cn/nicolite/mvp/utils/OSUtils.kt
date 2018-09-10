@@ -11,43 +11,60 @@ import java.io.InputStreamReader
  * 系统辅助类，用于判断系统类型
  */
 object OSUtils {
-    private val TAG = "OSUtils"
-    private val KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code"
-    private val KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name"
-    private val KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage"
+    private const val TAG = "OSUtils"
+    private const val KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code"
+    private const val KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name"
+    private const val KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage"
 
-    private val KEY_EMUI_VERSION_CODE = "ro.build.version.emui"
-    private val KEY_EMUI_API_LEVEL = "ro.build.hw_emui_api_level"
+    private const val KEY_EMUI_VERSION_CODE = "ro.build.version.emui"
+    private const val KEY_EMUI_API_LEVEL = "ro.build.hw_emui_api_level"
 
 
     fun isFlyme(): Boolean {
         return try {
             val method = Build::class.java.getMethod("hasSmartBar")
             method != null
-        } catch (e: Exception) {
+        } catch (exception: Exception) {
+            LogUtils.d(TAG, "Unable to find hasSmartBar \n${exception.message}")
             false
         }
     }
 
     fun isEMUI(): Boolean {
-        return isPropertiesExist(KEY_EMUI_VERSION_CODE, KEY_EMUI_API_LEVEL)
+        return try {
+            isPropertiesExist(KEY_EMUI_VERSION_CODE, KEY_EMUI_API_LEVEL)
+        } catch (exception: Exception) {
+            LogUtils.d(TAG, "Unable to find EMUI keys ${exception.message}")
+            false
+        }
     }
 
     fun isMIUI(): Boolean {
-        return isPropertiesExist(KEY_MIUI_VERSION_CODE, KEY_MIUI_VERSION_NAME, KEY_MIUI_INTERNAL_STORAGE)
+        return try {
+            isPropertiesExist(KEY_MIUI_VERSION_CODE, KEY_MIUI_VERSION_NAME, KEY_MIUI_INTERNAL_STORAGE)
+        } catch (exception: Exception) {
+            LogUtils.d(TAG, "Unable to find MIUI keys ${exception.message}")
+
+            false
+        }
     }
 
     fun getMIUIVersion(): Int {
-        val property = getProperty(KEY_MIUI_VERSION_NAME)
         var versionCode = 0
-        if (property.isNotEmpty()) {
-            val versionString = property.replace("V", "")
-                    .replace("v", "")
-                    .trim()
-            if (TextUtils.isDigitsOnly(versionString)) {
-                versionCode = versionString.toInt()
+        try {
+            val property = getProperty(KEY_MIUI_VERSION_NAME)
+            if (property.isNotEmpty()) {
+                val versionString = property.replace("V", "")
+                        .replace("v", "")
+                        .trim()
+                if (TextUtils.isDigitsOnly(versionString)) {
+                    versionCode = versionString.toInt()
+                }
             }
+        } catch (exception: Exception) {
+            LogUtils.d(TAG, "get versionCode fail ${exception.message}")
         }
+
         return versionCode
     }
 
